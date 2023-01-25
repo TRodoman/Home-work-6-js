@@ -22,6 +22,7 @@ const worke2 = new Worker('Ольга', 'Кравченко', 18, 20);
 document.write(`Заработная плата работника: ${worke1.name} ${worke1.surname} за декабрь составляет ${worke1.getSalary()}грн. ` + "<br />");
 document.write(`Заработная плата работника: ${worke2.name} ${worke2.surname} за декабрь составляет ${worke2.getSalary()}грн.`);
 
+document.write('<hr>');
 // ----------------------------------------------------------------------------------------------------------
 
 // Реалізуйте клас MyString, який матиме такі методи: метод reverse(),
@@ -59,11 +60,12 @@ class MyString {
 }
 const str = new MyString();
 
-document.write(str.reverse('привет мир')+ '<br/>');
+document.write(str.reverse('Привет мир')+ '<br/>');
 document.write(str.ucFirst('привет мир')+'<br/>');
 document.write(str.ucWords('привет мир')+'<br/>');
 
-// -------------------------------------------------------------------------------------
+document.write('<hr>');
+// // -------------------------------------------------------------------------------------
 
 // Створіть клас Phone, який містить змінні number, model і weight.
 // Створіть три екземпляри цього класу.
@@ -93,14 +95,15 @@ const Phon1 = new Phone("+380501212121", "IPhone",  5, 'Оксана');
 const Phon2 = new Phone("+380506652333", "Samsung", 6, 'Максим');
 const Phon3 = new Phone("+380672445566", "Motorola", 7, 'Иван');
 
-console.log(Phon1.number, Phon1.model, Phon1.weight);
-console.log(Phon2.number, Phon2.model, Phon2.weight);
-console.log(Phon3.number, Phon3.model, Phon3.weight);
+document.write(`${Phon1.number}  ${Phon1.model}  ${Phon1.weight}` +'<br/>');
+document.write(`${Phon2.number}  ${Phon2.model}  ${Phon2.weight}`+'<br/>');
+document.write(`${Phon3.number}  ${Phon3.model}  ${Phon3.weight}`+'<br/>');
 
-console.log(`${Phon1.receiveCall()}:  ${Phon1.getNumber()}`);
-console.log(`${Phon2.receiveCall()}:  ${Phon2.getNumber()}`);
-console.log(`${Phon3.receiveCall()}:  ${Phon3.getNumber()}`);
+document.write(`${Phon1.receiveCall()}:  ${Phon1.getNumber()}`+'<br/>');
+document.write(`${Phon2.receiveCall()}:  ${Phon2.getNumber()}`+'<br/>');
+document.write(`${Phon3.receiveCall()}:  ${Phon3.getNumber()}`+'<br/>');
 
+document.write('<hr>');
 // -------------------------------------------------------------------------
 
 // Створити клас Car , Engine та Driver.
@@ -167,9 +170,9 @@ document.write(car.turnRight() + "<br/>");
 document.write(car.turnLeft() + "<br/>");
 
 document.write('<hr>');
-// // -----------------------------------------------------------------------------------------------------
-// // Створити похідний від Car клас - Lorry (вантажівка), що характеризується також вантажопідйомністю кузова.
-// // Створити похідний від Car клас - SportCar, який також характеризується граничною швидкістю.
+// // // -----------------------------------------------------------------------------------------------------
+// // // Створити похідний від Car клас - Lorry (вантажівка), що характеризується також вантажопідйомністю кузова.
+// // // Створити похідний від Car клас - SportCar, який також характеризується граничною швидкістю.
 
 class Lorry extends Car {
   constructor(brand, carClass, weight, carrying) {
@@ -239,12 +242,12 @@ const animals = new Animal();
 
 console.log(animals.makeNoise());
 
-
-
 class Dog extends Animal {
-  constructor(food, location, color) {
+  constructor(food, location, color, animalType, name) {
     super(food, location);
     this.color = color;
+    this.animalType = animalType;
+    this.name = name;
   }
   makeNoise() {
     return "Собака говорит Гав-гав-гав!!!!";
@@ -253,14 +256,15 @@ class Dog extends Animal {
     return "Собака ест";
   }
 }
-const dog = new Dog("Кость", "В будке", "черный");
+const dog = new Dog("Кость", "В будке", "черный", 'Собака', 'Шарик');
 console.log(dog);
 
-
 class Cat extends Animal {
-  constructor(food, location, name) {
+  constructor(food, location, name, animalType) {
     super(food, location);
     this.name = name;
+    this.animalType = animalType;
+
   }
   makeNoise() {
     return "Кошка говорит Мя-я-я-у!!!!";
@@ -270,15 +274,15 @@ class Cat extends Animal {
   }
 }
 
-const cat = new Cat("Молоко", "В доме", "Мурка");
+const cat = new Cat("Молоко", "В доме", "Мурка", 'Кошка');
 console.log(cat);
 
-
-
 class Horse extends Animal {
-  constructor(food, location, weight) {
+  constructor(food, location, weight, animalType, name) {
     super(food, location);
     this.weight = weight;
+    this.animalType = animalType;
+    this.name = name;
   }
   makeNoise() {
     return "Лощадь говорит И-го-го!!!!";
@@ -287,55 +291,25 @@ class Horse extends Animal {
     return `Лощадь ест ${horse.food}`;
   }
 }
-const horse = new Horse("Овес", "В конюшне", "420 кг");
+const horse = new Horse("Овес", "В конюшне", "420 кг", 'Конь', 'Орлик');
 console.log(horse);
 console.log(horse.makeNoise());
 console.log(horse.eat());
 
-// -------------------------------------------------------
-// Створіть клас Ветеринар, у якому визначте метод void treatAnimal(Animal animal). Нехай цей метод роздруковує food і location тварини,
-// що прийшла на прийом.
-// У методі main створіть масив типу Animal, в який запишіть тварин всіх типів, що є у вас. У циклі надсилайте їх на прийом до ветеринара.
-
-
 class Vet {
-  
-
-  treatAnimal () {
-    const allAnimal = [dog, cat, horse]
-    
-      for(let i = 0; i < allAnimal.length; i++){
-        document.write(`food:  ${allAnimal[i].food}, location: ${allAnimal[i].location} <br/>`);
-      }
+  static treatAnimal(animal) {
+    document.write(
+      ` Сейчас на приеме у ветеринара:  ${animal.animalType} ${animal.name}, ест ${animal.food}, живет ${animal.location} <br/>`
+    );
   }
-  
-  main(){
-
-    const animalName = ['Dog', 'Cat', 'Horse'];
-    
-    for(let i = 0; i < animalName.length; i++){
-    
-      document.write(`${animalName[i]} на приеме у ветеринара <br/>`);
+  static main() {
+    const animalArr = [dog, cat, horse];
+    for (let i = 0; i < animalArr.length; i++) {
+      this.treatAnimal(animalArr[i]);
     }
   }
-  
 }
 
-const vet = new Vet();
-
-
-console.log(vet.main());
-console.log(vet.treatAnimal());
-
-
-
-
-
-
-
-
-
-
-
+Vet.main();
 
 
